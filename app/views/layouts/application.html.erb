@@ -6,17 +6,34 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      
-      <%= yield %>
-    </main>
+  <body class="min-h-screen bg-gray-100">
+    <header class="bg-white shadow-sm lg:static lg:overflow-y-visible">
+      <h1> Navbar </h1>
+    </header>
+    
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <div class="py-6">
+      <div class="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
+        <div class="hidden lg:col-span-3 lg:block xl:col-span-2">
+          <nav aria-label="Sidebar" class="sticky top-6 divide-y divide-gray-300">
+            <h1> Sidebar </h1>
+          </nav>
+        </div>
+        <main class="lg:col-span-9 xl:col-span-6">
+          <%= yield %>
+        </main>
+        <aside class="hidden xl:col-span-4 xl:block">
+          <div class="sticky top-6 space-y-4">
+            <h1> Aside </h1>
+          </div>
+        </aside>
+      </div>
+    </div>
   </body>
 </html>
